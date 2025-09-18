@@ -1,0 +1,5 @@
+[plugin]
+package = "pretix-automember"
+modules = [ "pretix_automember" ]
+marketplace_name = "automember"
+

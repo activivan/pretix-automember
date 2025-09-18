@@ -1,0 +1,36 @@
+{% extends "pretixcontrol/base.html" %}
+{% load i18n %}
+{% load bootstrap3 %}
+
+{% block title %}{% trans "Automember Settings" %}{% endblock %}
+
+{% block content %}
+    <h1>{% trans "Automember Settings" %}</h1>
+    <form action="" method="post" class="form-horizontal">
+        {% csrf_token %}
+
+        {# General Settings Panel #}
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">{% trans "General" %}</h3></div>
+            <div class="panel-body">
+                {% bootstrap_field form.plugin_enabled layout='horizontal' %}
+                {% bootstrap_field form.membership_id layout='horizontal' %}
+            </div>
+        </div>
+
+        {# Duration Settings Panel #}
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">{% trans "Duration" %}</h3></div>
+            <div class="panel-body">
+                {% bootstrap_field form.duration_type layout='horizontal' %}
+                {% bootstrap_field form.duration_days layout='horizontal' %}
+            </div>
+        </div>
+
+        <div class="form-group submit-group">
+            <button type="submit" class="btn btn-primary btn-save">
+                {% trans "Save" %}
+            </button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-18 19:01+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: activivan\n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Automember Settings"
+msgstr "Automember-Einstellungen"
+
+msgid "General"
+msgstr "Allgemein"
+
+msgid "Duration"
+msgstr "Dauer"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Enable plugin for this organizer"
+msgstr "Plugin für diesen Organisator aktivieren"
+
+msgid "Membership"
+msgstr "Mitgliedschaft"
+
+msgid "What membership to assign on login"
+msgstr "Welche Mitgliedschaft beim Login zugewiesen werden soll"
+
+msgid "Until the end of the semester"
+msgstr "Bis zum Ende des Semesters"
+
+msgid "For a specific number of days"
+msgstr "Für eine bestimmte Anzahl von Tagen"
+
+msgid "Membership Duration"
+msgstr "Dauer der Mitgliedschaft"
+
+msgid "Number of days"
+msgstr "Anzahl der Tage"
+
+msgid "Only used if 'specific number of days' is selected above."
+msgstr "Nur verwenden, wenn oben 'Für eine bestimmte Anzahl von Tagen' ausgewählt ist."
+
+msgid "You must specify the number of days if you select that option."
+msgstr "Sie müssen die Anzahl der Tage angeben, wenn Sie diese Option auswählen."
+
+msgid "Your settings have been saved."
+msgstr "Ihre Einstellungen wurden gespeichert."
+
+msgid "Automember"
+msgstr "Automember"
+
+msgid "Auto assign membership to customers on login"
+msgstr "Weist Kunden beim Login automatisch eine Mitgliedschaft zu"
