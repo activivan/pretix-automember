@@ -3,7 +3,8 @@ name = "pretix-automember"
 dynamic = ["version"]
 description = "Auto assign membership to customers on login"
 readme = "README.rst"
-license = {text = "Apache"}
+license = "Apache-2.0"
+license-files = ["LICENSE"]
 keywords = ["pretix"]
 authors = [
     {name = "activivan", email = "activivan.studios@gmail.com"},
@@ -13,19 +14,17 @@ maintainers = [
 ]
 
 dependencies = [
+    "pretix"
 ]
 
 [project.entry-points."pretix.plugin"]
 pretix_automember = "pretix_automember:PretixPluginMeta"
 
-[project.entry-points."distutils.commands"]
-build = "pretix_plugin_build.build:CustomBuild"
-
 [build-system]
 requires = [
     "setuptools",
-    "pretix-plugin-build",
 ]
+build-backend = "setuptools.build_meta"
 
 [project.urls]
 homepage = "https://github.com/activivan/pretix-automember"
