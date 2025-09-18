@@ -6,6 +6,8 @@ from pretix.base.signals import customer_signed_in
 from pretix.base.models import Customer
 from pretix.base.models.memberships import Membership, MembershipType
 from datetime import datetime, timedelta
+from django.utils import timezone
+import pytz
 
 @receiver(nav_organizer, dispatch_uid="pretix_automember_nav_organizer_settings")
 def navbar_organizer_settings(sender, request, **kwargs):
@@ -42,19 +44,29 @@ def customer_signed_in_handler(customer, sender, **kwargs):
         return
 
     # Calculate expiry date based on semester
-    now = datetime.now()
+    now = timezone.now()
+
+    try:
+        organizer_tz = pytz.timezone(organizer.settings.timezone)
+    except pytz.UnknownTimeZoneError:
+        # Fallback to UTC if the timezone is invalid for some reason
+        organizer_tz = pytz.utc
+
+    tz_now = now.astimezone(organizer_tz)
+    
     duration_type = organizer.settings.get('automember_duration_type', default='semester')
 
     if duration_type == 'semester':
-        if 4 <= now.month <= 9:
+        if 4 <= tz_now.month <= 9:
             # Summer semester
-            expiry_date = datetime(now.year, 9, 30, 23, 59, 59)
+            naive_expiry_date = datetime(tz_now.year, 9, 30, 23, 59, 59)
         else:
             # Winter semester
-            if now.month >= 10:
-                expiry_date = datetime(now.year + 1, 3, 31, 23, 59, 59)
+            if tz_now.month >= 10:
+                naive_expiry_date = datetime(tz_now.year + 1, 3, 31, 23, 59, 59)
             else:
-                expiry_date = datetime(now.year, 3, 31, 23, 59, 59)
+                naive_expiry_date = datetime(tz_now.year, 3, 31, 23, 59, 59)
+        expiry_date = organizer_tz.localize(naive_expiry_date)
     elif duration_type == 'days':
         duration_days = organizer.settings.get('automember_duration_days', as_type=int)
         if not duration_days:
